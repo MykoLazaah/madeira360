@@ -2,7 +2,7 @@ const fs = require('fs')
 const path = require('path')
 const matter = require('gray-matter')
 const { remark } = require('remark')
-const html = require('remark-html')
+const html = require('remark-html').default  // ← ДОБАВЬТЕ .default
 
 const contentDir = path.join(process.cwd(), 'content')
 
