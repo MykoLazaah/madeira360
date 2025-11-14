@@ -2,7 +2,7 @@ const fs = require('fs')
 const path = require('path')
 const matter = require('gray-matter')
 const { remark } = require('remark')
-const html = require('remark-html').default  // ← ДОБАВЬТЕ .default
+const html = require('remark-html')
 
 const contentDir = path.join(process.cwd(), 'content')
 
@@ -10,7 +10,8 @@ async function getPostBySlug(lang, slug) {
   const fullPath = path.join(contentDir, lang, 'blog', slug + '.md')
   const file = fs.readFileSync(fullPath, 'utf8')
   const { data, content } = matter(file)
-  const contentHtml = String(await remark().use(html).process(content))
+  const processedContent = await remark().use(html).process(content)
+  const contentHtml = processedContent.toString()
   return { meta: data, content: contentHtml }
 }
 
