@@ -2,8 +2,14 @@ import Head from 'next/head'
 import { getAllPosts, getPostBySlug } from '../../../lib/posts'
 
 export async function getStaticPaths() {
-  const posts = getAllPosts('de').concat(getAllPosts('en'))
-  const paths = posts.map(p => ({ params: { lang: p.lang || 'de', slug: p.slug } }))
+  const dePosts = getAllPosts('de')
+  const enPosts = getAllPosts('en')
+  
+  const paths = [
+    ...dePosts.map(p => ({ params: { lang: 'de', slug: p.slug } })),
+    ...enPosts.map(p => ({ params: { lang: 'en', slug: p.slug } }))
+  ]
+  
   return { paths, fallback: false }
 }
 
