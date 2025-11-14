@@ -12,8 +12,6 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "axios": "^1.6.0",
-    "gray-matter": "^4.0.3",
-    "remark": "13.0.0",
-    "remark-html": "13.0.1"
+    "gray-matter": "^4.0.3"
   }
 }
