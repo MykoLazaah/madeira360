@@ -7,33 +7,32 @@ const nextConfig = {
     defaultLocale: 'de',
   },
 
-  // Внутренние переписывания (rewrites) — оставляем URL "/de" видимым,
-  // но отдаем содержимое из "/de/de"
+  // Переписывания: пользователь видит /de, /en, но контент берётся
+  // из существующих вложенных путей /de/de и /de/en
   async rewrites() {
     return [
-      // корень локали: /de -> /de/de, /en -> /de/en
+      // корневые локали (видимый URL -> реальное местоположение)
       { source: '/de', destination: '/de/de' },
       { source: '/en', destination: '/de/en' },
 
-      // блог: /de/blog/slug -> /de/de/blog/slug
+      // блог: /de/blog/:slug -> /de/de/blog/:slug
       { source: '/de/blog/:slug*', destination: '/de/de/blog/:slug*' },
       { source: '/en/blog/:slug*', destination: '/de/en/blog/:slug*' },
 
-      // любые другие пути внутри локали — пробрасываем аналогично
-      // пример: /de/some/path -> /de/de/some/path
+      // все прочие пути внутри локали — проброс к вложенной структуре
       { source: '/de/:rest*', destination: '/de/de/:rest*' },
       { source: '/en/:rest*', destination: '/de/en/:rest*' },
-    ]
+    ];
   },
 
-  // (опционально) если хотите внешние редиректы вместо "маскировки" URL,
-  // замените/добавьте правила ниже:
+  // (опционально) Если хотите вместо "маскировки" делать внешний редирект,
+  // раскомментируйте блок ниже и закомментируйте/удалите rewrites.
   /*
   async redirects() {
     return [
       { source: '/de', destination: '/de/de', permanent: false },
       { source: '/en', destination: '/de/en', permanent: false },
-    ]
+    ];
   },
   */
 };
