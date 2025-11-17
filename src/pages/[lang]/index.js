@@ -1,4 +1,4 @@
-import Head from 'next/head'
+6import Head from 'next/head'
 import Link from 'next/link'
 import { getAllPosts } from '../../lib/posts'
 import LeadForm from '../../components/LeadForm'
@@ -23,8 +23,8 @@ export default function Home({ posts, lang }) {
       <Head>
         <title>{lang === 'de' ? 'Madeira Guide' : 'Madeira Guide (EN)'}</title>
         <meta name="description" content="Insider Guide Madeira — Wanderungen, Strände, Apartments."/>
-        <link rel="alternate" hrefLang="de" href="https://yourdomain.com/de/" />
-        <link rel="alternate" hrefLang="en" href="https://yourdomain.com/en/" />
+        <link rel="alternate" hrefLang="de" href="https://madeira360.online/de/" />
+        <link rel="alternate" hrefLang="en" href="https://madeira360.online/en/" />
       </Head>
       <main style={{padding:'2rem', maxWidth:900, margin:'0 auto'}}>
         <h1>{lang === 'de' ? 'Entdecke Madeira' : 'Discover Madeira'}</h1>
