@@ -25,8 +25,8 @@ export default function Home({ posts, lang }) {
       <Head>
         <title>{lang === 'de' ? 'Madeira Guide' : 'Madeira Guide (EN)'}</title>
         <meta name="description" content="Insider Guide Madeira — Wanderungen, Strände, Apartments." />
-        <link rel="alternate" hrefLang="de" href="https://madeira360.online/de/" />
-        <link rel="alternate" hrefLang="en" href="https://madeira360.online/en/" />
+        <link rel="alternate" hrefLang="de" href={"https://madeira360.online/de/"} />
+        <link rel="alternate" hrefLang="en" href={"https://madeira360.online/en/"} />
       </Head>
       
       <main style={{ padding: '2rem', maxWidth: 900, margin: '0 auto' }}>
